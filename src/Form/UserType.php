@@ -21,6 +21,8 @@ class UserType extends AbstractType
             ->add('favouriteCategory')
             ->add('defaultVat')
         ;
+
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

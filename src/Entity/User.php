@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -18,16 +19,19 @@ class User
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min = 3, minMessage="Login must have at least three characters!")
      */
     private $login;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email()
      */
     private $email;
 
@@ -38,11 +42,13 @@ class User
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url()
      */
     private $website;
 
     /**
      * @ORM\Column(type="string", length=2)
+     * @Assert\Country
      */
     private $country;
 
@@ -53,6 +59,8 @@ class User
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\LessThanOrEqual(100)
+     * @Assert\GreaterThanOrEqual(1)
      */
     private $defaultVat;
 
